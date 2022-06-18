@@ -1,0 +1,17 @@
+version: '3'
+services:
+  saibaiman.postgres:
+    image: postgres:12.11
+    container_name: saibaiman.postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres/init:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: saibaiman
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+    hostname: postgres
+    restart: always
+    user: root
